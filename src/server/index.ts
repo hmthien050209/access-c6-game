@@ -56,9 +56,10 @@ io.on("connection", (socket) => {
       answer: answer,
       timeToAnswer: Date.now() - startTime,
     };
-    entries.push(entry);
+    if (entries.find((val) => val.userId === entry.userId) === undefined) {
+      entries.push(entry);
+    }
     console.log(entry);
-    entries.sort((a, b) => a.timeToAnswer - b.timeToAnswer);
     io.to("admin").emit("listOfAnswers", entries);
   });
 

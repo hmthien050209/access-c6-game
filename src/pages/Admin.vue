@@ -7,7 +7,7 @@
       class="entry"
     >
       <span>Máy số {{ entry.userId }}</span>
-      <span>Thời gian {{ entry.timeToAnswer }}ms</span>
+      <span>Thời gian {{ entry.timeToAnswer / 1000 }}s</span>
       <span
         >Đáp án
         <span
@@ -30,7 +30,7 @@
 
 <style scoped>
 * {
-  @apply m-2 p-2 text-2xl;
+  @apply m-2 w-3/4 p-2 text-2xl;
 }
 .answer {
   @apply font-bold;

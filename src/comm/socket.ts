@@ -6,6 +6,7 @@ import {
   ServerToClientEvents,
 } from "../types/SocketIoTypes";
 import { Quiz } from "../types/Quiz";
+import { Server } from "http";
 
 interface State {
   connected: boolean;
@@ -31,9 +32,11 @@ export const adminState: AdminState = reactive({
 // "undefined" means the URL will be computed from the `window.location` object";
 const URL = import.meta.env.DEV ? "http://localhost:3001" : undefined;
 
-export const socket: Socket<ServerToClientEvents, ClientToServerEvents> = URL
-  ? io(URL, { port: 3001 })
-  : io({ port: 3001 });
+// export const socket: Socket<ServerToClientEvents, ClientToServerEvents> = URL
+//   ? io(URL, { port: 3001 })
+//   : io({ port: 3001 });
+
+export const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io();
 
 socket.on("connect", () => {
   state.connected = true;
